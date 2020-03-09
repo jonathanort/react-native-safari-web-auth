@@ -55,6 +55,11 @@ RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL urlScheme:(NSString *)urlSchem
     }
 }
 
+RCT_EXPORT_METHOD(dismiss)
+{
+    [_authenticationVC cancel];
+}
+
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
 #pragma mark - ASWebAuthenticationPresentationContextProviding
 
