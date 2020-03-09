@@ -23,7 +23,7 @@ RCT_EXPORT_MODULE()
     return dispatch_get_main_queue();
 }
 
-RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL)
+RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL urlScheme:(NSString *)urlScheme)
 {
     if (!requestURL) {
         RCTLogError(@"[SafariWebAuth] You must specify a url.");
@@ -33,7 +33,7 @@ RCT_EXPORT_METHOD(requestAuth:(NSURL *)requestURL)
     if (@available(iOS 12.0, *)) {
         ASWebAuthenticationSession* authenticationVC =
         [[ASWebAuthenticationSession alloc] initWithURL:requestURL
-                                      callbackURLScheme: @""
+                                      callbackURLScheme: urlScheme
                                       completionHandler:^(NSURL * _Nullable callbackURL,
                                                           NSError * _Nullable error) {
             _authenticationVC = nil;
